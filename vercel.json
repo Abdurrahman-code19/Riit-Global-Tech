@@ -12,103 +12,103 @@
     },
     {
       "source": "/about",
-      "destination": "/index.html"
+      "destination": "/about/index.html"
     },
     {
       "source": "/services",
-      "destination": "/index.html"
+      "destination": "/services/index.html"
     },
     {
       "source": "/services/home-office-networking",
-      "destination": "/index.html"
+      "destination": "/services/home-office-networking/index.html"
     },
     {
       "source": "/services/cbt-cbe-centre-setup",
-      "destination": "/index.html"
+      "destination": "/services/cbt-cbe-centre-setup/index.html"
     },
     {
       "source": "/services/website-development",
-      "destination": "/index.html"
+      "destination": "/services/website-development/index.html"
     },
     {
       "source": "/services/ecommerce-development",
-      "destination": "/index.html"
+      "destination": "/services/ecommerce-development/index.html"
     },
     {
       "source": "/services/blog-development",
-      "destination": "/index.html"
+      "destination": "/services/blog-development/index.html"
     },
     {
       "source": "/services/portfolio-websites",
-      "destination": "/index.html"
+      "destination": "/services/portfolio-websites/index.html"
     },
     {
       "source": "/services/ict-professional-training",
-      "destination": "/index.html"
+      "destination": "/services/ict-professional-training/index.html"
     },
     {
       "source": "/services/sales-repairs-configurations",
-      "destination": "/index.html"
+      "destination": "/services/sales-repairs-configurations/index.html"
     },
     {
       "source": "/services/it-consulting-support",
-      "destination": "/index.html"
+      "destination": "/services/it-consulting-support/index.html"
     },
     {
       "source": "/academy",
-      "destination": "/index.html"
+      "destination": "/academy/index.html"
     },
     {
       "source": "/academy/computer-hardware",
-      "destination": "/index.html"
+      "destination": "/academy/computer-hardware/index.html"
     },
     {
       "source": "/academy/networking",
-      "destination": "/index.html"
+      "destination": "/academy/networking/index.html"
     },
     {
       "source": "/academy/data-analysis",
-      "destination": "/index.html"
+      "destination": "/academy/data-analysis/index.html"
     },
     {
       "source": "/academy/cybersecurity",
-      "destination": "/index.html"
+      "destination": "/academy/cybersecurity/index.html"
     },
     {
       "source": "/academy/os-fundamentals",
-      "destination": "/index.html"
+      "destination": "/academy/os-fundamentals/index.html"
     },
     {
       "source": "/academy/frontend-development",
-      "destination": "/index.html"
+      "destination": "/academy/frontend-development/index.html"
     },
     {
       "source": "/academy/wordpress-training",
-      "destination": "/index.html"
+      "destination": "/academy/wordpress-training/index.html"
     },
     {
       "source": "/academy/graphic-design",
-      "destination": "/index.html"
+      "destination": "/academy/graphic-design/index.html"
     },
     {
       "source": "/404",
-      "destination": "/index.html"
+      "destination": "/404/index.html"
     },
     {
       "source": "/projects",
-      "destination": "/index.html"
+      "destination": "/projects/index.html"
     },
     {
       "source": "/contact",
-      "destination": "/index.html"
+      "destination": "/contact/index.html"
     },
     {
       "source": "/privacy",
-      "destination": "/index.html"
+      "destination": "/privacy/index.html"
     },
     {
       "source": "/terms",
-      "destination": "/index.html"
+      "destination": "/terms/index.html"
     }
   ],
   "headers": [

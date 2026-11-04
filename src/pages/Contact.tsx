@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { usePageMeta, breadcrumbSchema } from "@/hooks/usePageMeta";
 import { site } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
 const contactSchema = [
   breadcrumbSchema([
@@ -59,10 +60,7 @@ export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
 
   usePageMeta({
-    title: "Contact",
-    description:
-      "Contact RIIT Global Tech at 25, Ijegun Road, Oropo Bus Stop, Ikotun, Alimosho, Lagos. Call 0802 396 2693, email riitic51@gmail.com or send an enquiry.",
-    path: "/contact",
+    ...pageSeo("/contact"),
     jsonLd: contactSchema,
   });
 

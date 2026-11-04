@@ -4,15 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/common/Reveal";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { navLinks } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
 export default function NotFound() {
-  usePageMeta({
-    title: "Page not found",
-    description:
-      "The page you were looking for could not be found. Explore RIIT Global Tech services, Academy programmes, projects or contact us directly.",
-    path: "/404",
-    noindex: true,
-  });
+  usePageMeta(pageSeo("/404"));
 
   return (
     <section className="relative flex min-h-[80svh] items-center overflow-hidden border-b border-border bg-background">

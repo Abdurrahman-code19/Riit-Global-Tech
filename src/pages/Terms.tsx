@@ -5,6 +5,7 @@ import { Reveal } from "@/components/common/Reveal";
 import { CTASection } from "@/components/common/CTASection";
 import { usePageMeta, breadcrumbSchema } from "@/hooks/usePageMeta";
 import { site } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
 const termsSchema = [
   breadcrumbSchema([
@@ -98,10 +99,7 @@ const updated = "3 November 2026";
 
 export default function Terms() {
   usePageMeta({
-    title: "Terms of Use",
-    description:
-      "The terms that apply to using the RIIT Global Tech website, including information accuracy, enquiries, intellectual property, third-party links and governing law.",
-    path: "/terms",
+    ...pageSeo("/terms"),
     jsonLd: termsSchema,
   });
 

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { getIcon } from "@/lib/icons";
 import { usePageMeta, breadcrumbSchema } from "@/hooks/usePageMeta";
 import { capabilityAreas, site, values, whyRiit } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
 const aboutSchema = [
   breadcrumbSchema([
@@ -45,10 +46,7 @@ const principles = [
 
 export default function About() {
   usePageMeta({
-    title: "About RIIT Global Tech",
-    description:
-      "Since 2010, RIIT Global Tech has delivered ICT solutions and practical digital skills to individuals, schools and businesses in Lagos, Nigeria. Learn about our story and values.",
-    path: "/about",
+    ...pageSeo("/about"),
     jsonLd: aboutSchema,
   });
 

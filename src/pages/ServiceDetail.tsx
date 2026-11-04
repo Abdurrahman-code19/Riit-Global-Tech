@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { getIcon } from "@/lib/icons";
 import { usePageMeta, breadcrumbSchema } from "@/hooks/usePageMeta";
 import { services, site } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 import NotFound from "./NotFound";
 
 export default function ServiceDetail() {
@@ -46,15 +47,17 @@ export default function ServiceDetail() {
       ]
     : undefined;
 
-  usePageMeta({
-    title: service ? `${service.title}` : "Service not found",
-    description: service
-      ? `${service.description} RIIT Global Tech delivers ${service.title.toLowerCase()} for ${service.audiences.toLowerCase()} in Lagos, Nigeria.`
-      : "The requested service could not be found.",
-    path: service ? `/services/${service.slug}` : "/services",
-    jsonLd: schema,
-    noindex: !service,
-  });
+  usePageMeta(
+    service
+      ? { ...pageSeo(`/services/${service.slug}`), jsonLd: schema }
+      : {
+          title: "Service not found",
+          description: "The requested service could not be found.",
+          path: "/services",
+          jsonLd: schema,
+          noindex: true,
+        },
+  );
 
   if (!service) return <NotFound />;
 

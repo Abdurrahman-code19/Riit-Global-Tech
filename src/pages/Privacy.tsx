@@ -5,6 +5,7 @@ import { Reveal } from "@/components/common/Reveal";
 import { CTASection } from "@/components/common/CTASection";
 import { usePageMeta, breadcrumbSchema } from "@/hooks/usePageMeta";
 import { site } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
 const privacySchema = [
   breadcrumbSchema([
@@ -99,10 +100,7 @@ const updated = "3 November 2026";
 
 export default function Privacy() {
   usePageMeta({
-    title: "Privacy Policy",
-    description:
-      "How RIIT Global Tech handles personal information submitted through this website, including enquiry form data, retention, your choices and embedded Google Maps content.",
-    path: "/privacy",
+    ...pageSeo("/privacy"),
     jsonLd: privacySchema,
   });
 

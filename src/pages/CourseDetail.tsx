@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { getIcon } from "@/lib/icons";
 import { usePageMeta, breadcrumbSchema } from "@/hooks/usePageMeta";
 import { courses, site } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 import NotFound from "./NotFound";
 
 const enrolmentNotes = [
@@ -56,15 +57,17 @@ export default function CourseDetail() {
       ]
     : undefined;
 
-  usePageMeta({
-    title: course ? `${course.name} Course` : "Course not found",
-    description: course
-      ? `${course.description} Study ${course.name.toLowerCase()} with RIIT Academy in Ikotun, Lagos. Enquire about schedules, fees and entry requirements.`
-      : "The requested course could not be found.",
-    path: course ? `/academy/${course.slug}` : "/academy",
-    jsonLd: schema,
-    noindex: !course,
-  });
+  usePageMeta(
+    course
+      ? { ...pageSeo(`/academy/${course.slug}`), jsonLd: schema }
+      : {
+          title: "Course not found",
+          description: "The requested course could not be found.",
+          path: "/academy",
+          jsonLd: schema,
+          noindex: true,
+        },
+  );
 
   if (!course) return <NotFound />;
 

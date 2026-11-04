@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { getIcon } from "@/lib/icons";
 import { usePageMeta, breadcrumbSchema } from "@/hooks/usePageMeta";
 import { products, serviceCategories, services, site } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
 const servicesSchema = [
   breadcrumbSchema([
@@ -66,10 +67,7 @@ const categoryCopy: Record<string, string> = {
 
 export default function Services() {
   usePageMeta({
-    title: "Services",
-    description:
-      "Explore RIIT Global Tech services: networking, CBT/CBE centre setup, website and e-commerce development, ICT training, equipment sales, repairs and IT consulting in Lagos.",
-    path: "/services",
+    ...pageSeo("/services"),
     jsonLd: servicesSchema,
   });
 

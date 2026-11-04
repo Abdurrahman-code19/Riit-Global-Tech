@@ -8,6 +8,7 @@ import { Tag } from "@/components/common/Tag";
 import { Button } from "@/components/ui/button";
 import { usePageMeta, breadcrumbSchema } from "@/hooks/usePageMeta";
 import { capabilityAreas, cbtCentres, site } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
 const projectsSchema = [
   breadcrumbSchema([
@@ -44,10 +45,7 @@ const environments = [
 
 export default function Projects() {
   usePageMeta({
-    title: "Projects & Deployments",
-    description:
-      "See where RIIT Global Tech works: CBT/CBE examination centres in Lagos, plus capability areas spanning networking, school portals, e-commerce, equipment supply and ICT training.",
-    path: "/projects",
+    ...pageSeo("/projects"),
     jsonLd: projectsSchema,
   });
 

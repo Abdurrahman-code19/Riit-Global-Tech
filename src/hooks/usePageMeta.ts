@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { site } from "@/data/site";
+import { canonicalFor, fullTitle as brandTitle } from "@/data/seo";
 
 type PageMeta = {
   title: string;
@@ -41,8 +42,8 @@ export function usePageMeta({
   noindex = false,
 }: PageMeta) {
   useEffect(() => {
-    const fullTitle = title.includes("RIIT Global Tech") ? title : `${title} | RIIT Global Tech`;
-    const canonical = `${site.url}${path === "/" ? "/" : path}`;
+    const fullTitle = brandTitle({ title });
+    const canonical = canonicalFor({ path });
     const imageUrl = image.startsWith("http") ? image : `${site.url}${image}`;
 
     document.title = fullTitle;

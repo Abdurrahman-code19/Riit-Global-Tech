@@ -141,6 +141,10 @@ Run `npm run indexnow -- --dry-run` first to inspect the payload. The key is hos
 
 ### Crawlability checks
 
+The Vite build writes a static HTML shell for every route — unique title, description,
+canonical, robots and Open Graph tags — and `vercel.json` rewrites each URL to its own
+shell. Crawlers that do not execute JavaScript therefore still see per-page metadata.
+
 ```sh
 curl -I https://riit-global-tech.vercel.app/robots.txt
 curl -I https://riit-global-tech.vercel.app/sitemap.xml

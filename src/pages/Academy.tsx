@@ -10,6 +10,7 @@ import { CTASection } from "@/components/common/CTASection";
 import { Button } from "@/components/ui/button";
 import { usePageMeta, breadcrumbSchema } from "@/hooks/usePageMeta";
 import { courses, faqs, site } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
 const academySchema = [
   breadcrumbSchema([
@@ -42,10 +43,7 @@ const learningPoints = [
 
 export default function Academy() {
   usePageMeta({
-    title: "RIIT Academy",
-    description:
-      "Advance your career with practical ICT training under the Cisco Networking Academy: computer hardware, networking, cybersecurity, data analysis, frontend development, WordPress and graphic design.",
-    path: "/academy",
+    ...pageSeo("/academy"),
     jsonLd: academySchema,
   });
 

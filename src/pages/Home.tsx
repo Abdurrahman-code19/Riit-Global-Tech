@@ -9,6 +9,7 @@ import { StorySection } from "@/components/home/StorySection";
 import { CTASection } from "@/components/common/CTASection";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { faqs, site } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
 const homeSchema = [
   {
@@ -32,10 +33,7 @@ const homeSchema = [
 
 export default function Home() {
   usePageMeta({
-    title: "RIIT Global Tech | Your Reliable IT Partner",
-    description:
-      "RIIT Global Tech delivers networking, CBT/CBE centre setup, websites, UK-sourced equipment and Cisco Networking Academy training for individuals, schools and businesses in Lagos.",
-    path: "/",
+    ...pageSeo("/"),
     jsonLd: homeSchema,
   });
 
