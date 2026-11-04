@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-border bg-[#0B0C0D]">
       <div className="pointer-events-none absolute inset-0 grid-bg opacity-40" aria-hidden="true" />
-      <div className="container-wide relative z-10 py-16 md:py-20">
+      <div className="container-wide relative z-10 pb-28 pt-16 md:pb-32 md:pt-20 lg:pb-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">
             <Link to="/" className="inline-flex" aria-label="RIIT Global Tech home">

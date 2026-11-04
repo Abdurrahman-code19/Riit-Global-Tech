@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
 import { Navbar } from "./Navbar";
+import { MobileDock } from "./MobileDock";
 import { Footer } from "./Footer";
 import { site } from "@/data/site";
 
@@ -73,7 +74,7 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with RIIT Global Tech on WhatsApp"
-      className="group fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-[#07130A] shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-transform duration-300 hover:scale-105 focus-visible:outline-offset-4 sm:bottom-6 sm:right-6"
+      className="group fixed bottom-5 right-5 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-[#07130A] shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-transform duration-300 hover:scale-105 focus-visible:outline-offset-4 sm:bottom-6 sm:right-6 sm:flex"
     >
       <MessageCircle className="h-6 w-6" aria-hidden="true" />
       <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap border border-border bg-[#0E0F10] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100 lg:block">
@@ -89,6 +90,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <SkipLink />
       <ScrollProgress />
       <Navbar />
+      <MobileDock />
       <main id="main-content">{children}</main>
       <Footer />
       <FloatingWhatsApp />

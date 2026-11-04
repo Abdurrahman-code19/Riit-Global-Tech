@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { ArrowUpRight, Mail, MapPin, Menu, MessageCircle, Phone, X } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/button";
 import { navLinks, site } from "@/data/site";
@@ -37,10 +36,7 @@ function DesktopLink({ href, label }: { href: string; label: string }) {
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
   const location = useLocation();
-  const triggerRef = useRef<HTMLButtonElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
   const isHome = location.pathname === "/";
 
   useEffect(() => {
@@ -50,51 +46,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setOpen(false);
-  }, [location.pathname]);
-
-  useEffect(() => {
-    if (!open) return;
-
-    const previous = document.activeElement as HTMLElement | null;
-    const panel = panelRef.current;
-    const first = panel?.querySelector<HTMLElement>("a, button");
-    first?.focus();
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-        triggerRef.current?.focus();
-      }
-      if (event.key === "Tab" && panel) {
-        const focusable = Array.from(
-          panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
-        );
-        if (focusable.length === 0) return;
-        const firstEl = focusable[0];
-        const lastEl = focusable[focusable.length - 1];
-        if (event.shiftKey && document.activeElement === firstEl) {
-          event.preventDefault();
-          lastEl.focus();
-        } else if (!event.shiftKey && document.activeElement === lastEl) {
-          event.preventDefault();
-          firstEl.focus();
-        }
-      }
-    };
-
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.body.style.overflow = "";
-      document.removeEventListener("keydown", onKeyDown);
-      previous?.focus?.();
-    };
-  }, [open]);
-
-  const solid = scrolled || !isHome || open;
+  const solid = scrolled || !isHome;
 
   return (
     <header
@@ -151,90 +103,7 @@ export function Navbar() {
             </Link>
           </Button>
         </div>
-
-        <button
-          ref={triggerRef}
-          type="button"
-          onClick={() => setOpen((value) => !value)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          className="flex h-11 w-11 items-center justify-center border border-border text-foreground transition-colors hover:border-primary hover:text-primary lg:hidden"
-        >
-          {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
-        </button>
       </div>
-
-      {open &&
-        createPortal(
-          <div
-            id="mobile-menu"
-            ref={panelRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile navigation"
-            className="menu-panel fixed inset-0 top-[4.5rem] z-40 overflow-y-auto border-t border-border bg-[#0E0F10] pb-10 sm:top-20 lg:hidden"
-          >
-            <div className="container-wide flex min-h-full flex-col pt-8">
-                  <nav aria-label="Mobile" className="flex flex-col">
-                    {navLinks.map((link, index) => (
-                      <NavLink
-                        key={link.href}
-                        to={link.href}
-                        end={link.href === "/"}
-                        onClick={() => setOpen(false)}
-                        className={({ isActive }) =>
-                          cn(
-                            "flex items-center justify-between border-b border-border py-4 font-display text-2xl font-medium tracking-tight transition-colors",
-                            isActive ? "text-primary" : "text-foreground hover:text-primary",
-                          )
-                        }
-                      >
-                        <span>{link.label}</span>
-                        <span className="font-sans text-[10px] tracking-[0.18em] text-muted-foreground">
-                          0{index + 1}
-                        </span>
-                      </NavLink>
-                    ))}
-                  </nav>
-
-                  <div className="mt-8 grid gap-3">
-                    <Button asChild size="lg" className="w-full">
-                      <Link to="/contact" onClick={() => setOpen(false)}>
-                        Start a project
-                        <ArrowUpRight />
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      size="lg"
-                      className="w-full border border-border bg-transparent text-foreground hover:border-primary hover:text-primary"
-                    >
-                      <a href={site.whatsapp.href} target="_blank" rel="noopener noreferrer">
-                        <MessageCircle />
-                        WhatsApp us
-                      </a>
-                    </Button>
-                  </div>
-
-                  <div className="mt-10 space-y-3 border-t border-border pt-6 text-sm text-muted-foreground">
-                    <a href={`tel:${site.phones[0].tel}`} className="flex items-center gap-3 hover:text-primary">
-                      <Phone className="h-4 w-4 text-primary" aria-hidden="true" />
-                      {site.phones[0].display}
-                    </a>
-                    <a href={`mailto:${site.email}`} className="flex items-center gap-3 break-all hover:text-primary">
-                      <Mail className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                      {site.email}
-                    </a>
-                    <p className="flex items-start gap-3">
-                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                      {site.address.full}
-                    </p>
-              </div>
-            </div>
-          </div>,
-          document.body,
-        )}
     </header>
   );
 }
