@@ -1,22 +1,19 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.25rem",
       screens: {
         "2xl": "1400px",
       },
     },
     extend: {
-      fontFamily: {
-        heading: ['Montserrat', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -51,11 +48,29 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        brand: {
+          red: "#ED5156",
+          crimson: "#B5121B",
+          charcoal: "#171819",
+          burgundy: "#4A1115",
+          ink: "#0E0F10",
+          ivory: "#F4F1EA",
+          cream: "#FAF8F4",
+          sand: "#D8D3CA",
+          stone: "#A6A29B",
+        },
+      },
+      fontFamily: {
+        display: ["Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 1px)",
+        sm: "calc(var(--radius) - 2px)",
+      },
+      maxWidth: {
+        "8xl": "1440px",
       },
       keyframes: {
         "accordion-down": {
@@ -66,17 +81,38 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "slide": {
+        marquee: {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "grid-pan": {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "80px 80px" },
+        },
+        "orbit-spin": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        "pulse-soft": {
+          "0%, 100%": { opacity: "0.35" },
+          "50%": { opacity: "0.7" },
+        },
+        "scroll-cue": {
+          "0%": { transform: "translateY(0)", opacity: "0" },
+          "30%": { opacity: "1" },
+          "100%": { transform: "translateY(12px)", opacity: "0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "slide": "slide 30s linear infinite",
+        marquee: "marquee 38s linear infinite",
+        "grid-pan": "grid-pan 24s linear infinite",
+        "orbit-spin": "orbit-spin 38s linear infinite",
+        "pulse-soft": "pulse-soft 5s ease-in-out infinite",
+        "scroll-cue": "scroll-cue 1.8s ease-in-out infinite",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate],
 } satisfies Config;

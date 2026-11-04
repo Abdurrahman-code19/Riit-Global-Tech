@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.vercel
+.env*
+
+# Lighthouse temp profiles created with a Windows-style path on Linux
+/C:*
